@@ -18,3 +18,5 @@ try(if(all(abs(rowSums(juices[,13:24])-1)<0.001)) stop("Threshold for row sums")
 #Logit model
 logit <- glm(juices$Average_Recom ~ juices$Price + juices$Fruit_Proportion + juices$Fresh_Juice, family=binomial(link="logit"), data=juices)
 
+#notes:
+#http://www.princeton.edu/~otorres/LogitR101.pdf
