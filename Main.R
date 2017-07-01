@@ -3,7 +3,7 @@
 rm(list = ls())
 juices = read.csv("JuiceDataset.csv", header = TRUE, sep = ";", row.names= 1)
 fruits = list("Apple","Orange","Pineapple","Mango","Grape","Maracuja","Peach","Pear","Banana","Carrot","Lemon","Others")
-other_fruits = list("Kiwi","Tomato","Grapefruit","Rosa_Camina","Guava","Apricot","Mandarin","Papaia","Raspberry","Blueberry","Strawberry","Cherries")
+other_fruits = c("Kiwi","Tomato","Grapefruit","Rosa_Camina","Guava","Apricot","Mandarin","Papaia","Raspberry","Blueberry","Strawberry","Cherries")
 
 #Combine variables
 juices$Cherries <- rowSums(juices[other_fruits])
@@ -38,7 +38,7 @@ library(foreign)
 library(nnet)
 library(stargazer)
 MultinomLogit = multinom(Rounded_Average ~ Price + Fruit_Proportion + Fresh_Juice, data=juices)
-stargazer(MultinomLogit, type="html", out="multi1.htm")
+stargazer(MultinomLogit, type="text", out="multi1.htm")
 multi1.rrr = exp(coef(MultinomLogit))
 
 
