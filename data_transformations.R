@@ -21,7 +21,7 @@ dummyFruits <-function(data){
   return(data)
 }
 
-fruitCombiations <- function(data, x,y){
+fruitCombinations <- function(data, x,y){
 # Pairs
 data$P_ApplePineapple <- data$Apple * data$Pineapple *x
 data$P_AppleBanana <- data$Apple * data$Banana *x

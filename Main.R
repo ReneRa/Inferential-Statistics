@@ -28,9 +28,9 @@ triples = list("AppOrangPina", "AppOrangBana", "AppOrangMan", "AppOrangMara", "O
 juices<-createOtherCategory(juices)
 juices_scaled <- scalingFruits(juices)
 juices_dummy <- dummyFruits(juices)
-juices<-fruitCombiations(juices,10,100)
-juices_scaled<-fruitCombiations(juices_scaled,10,100)
-juices_dummy<-fruitCombiations(juices_dummy,1,1)
+juices<-fruitCombinations(juices,10,100)
+juices_scaled<-fruitCombinations(juices_scaled,10,100)
+juices_dummy<-fruitCombinations(juices_dummy,1,1)
 
 ##########################################################
 #                       Modeling                         #
