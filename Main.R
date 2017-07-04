@@ -40,13 +40,20 @@ juices_dummy<-fruitCombinations(juices_dummy,1,1)
 #########################
 
 #Linear model
-copy_juices <- juices
+copy_juices <- juices_scaled
 copy_juices$t<-juices$Added_Sugar * juices$Sugar
+copy_juices$Carrot2 <- copy_juices$Carrot^2*10
+model1 = "T_AppOrangBana + T_AppOrangPina + T_OrangPinaMan + P_CarrotLemon+ P_PearApple"
+model2 = "T_AppOrangBana + T_AppOrangPina + T_OrangPinaMan + Carrot + Sugar + P_PearApple+ Kcal"
+model3 = "T_AppOrangBana + T_AppOrangPina + T_OrangPinaMan + Carrot + Added_Sugar + Fresh_Juice + P_PearApple"
+linear <- lm(as.formula(paste("Avg_Rating ~ ",model3,sep="")), data=copy_juices)
+summary(linear)
+
 f<-paste(fruits[!fruits %in% common_fruits], collapse="+") #[ fruits %in% common_fruits]
 f<-""
 #c<-paste(bincoms,collapse = "+")
 #c<-paste(f,c,sep="+")
-linear <- lm(as.formula(paste("Average~  AppOrangBana + AppOrangPina + OrangPinaMan + BinCarrotLemon+BinPearApple ",f,sep="")), data=copy_juices)
+#linear <- lm(as.formula(paste("Average~  AppOrangBana + AppOrangPina + OrangPinaMan + BinCarrotLemon+BinPearApple ",f,sep="")), data=copy_juices)
 #linear2 <-lm(Average~, data=copy_juices)
 #linear<- lm(Average~  Fruit_Proportion+ AppOrangBana + OrangPinaMan, data = copy_juices)
 waldtest(linear)
